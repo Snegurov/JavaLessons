@@ -1,54 +1,47 @@
 public class Main {
 
-    public static double CalcExpression(double a, double b, double c, double d){
-        return a * (b + (c / d));
-    }
+    public static void printGroupsOfElements(int[] elements, int nMaxElem){
+        int[] counters = new int[nMaxElem];
 
-    public static boolean CheckSum(int a, int b){
-        int sum = a + b;
-        return sum >= 10 && sum <= 20;
-    }
+        for(int elem : elements){
+            if(elem > 0 && elem <= nMaxElem)
+                ++counters[elem - 1];
+        }
 
-    public static void PrintNumPositiveStatus(int num){
-        System.out.println(num >= 0? "положительное" : "отрицательное");
-    }
-
-    public static boolean IsNegative(int num) {
-        return num < 0;
-    }
-
-    public static void PrintHelloName(String sName){
-        System.out.println("Привет, " + sName + '!');
-    }
-
-    public static void PrintIsLeapYear(long nYear){
-        String sText = (nYear % 4 == 0 && nYear % 100 != 0) || nYear % 400 == 0? "" : " не";
-        System.out.println(nYear + " год" + sText + " является високосным");
+        for(int i = 0; i < counters.length; ++i)
+            System.out.println((i + 1) + ": " + counters[i] + " шт.");
     }
 
     public static void main(String[] args) {
-        byte nByte = 127;
-        short nShort = 32000;
-        int nInt = 100500;
-        long nLong = 100500100500L;
 
-        float dFloat = 1.077f;
-        double dDouble = 1.333333777;
+        Person[] persons = {
+            new Person("Греф Герман Оскарович", "Председатель", "gref@sberbank.ru", "+7(965)-977-7777", 1000000000.0, 55),
+            new Person("Михаил Евгеньевич Путин", "Зампред", "meput@gazpr.ru", "+7(921)-933-5353", 2000000, 52),
+            new Person("Смехов Василий Алибабаевич", "Прораб", "stroyka1956@mail.ru", "+7(956)-929-9452", 21500, 40),
+            new Person("Башкиров Сергей Михайлович", "Тренер", "bashkir_team@vizasport.ru", "+7(923)-222-7722", 150000, 57),
+            new Person("Мальвинюк Снежана Артемоновна", "Секретарь", "malvinka86@gmail.com", "+7(913)-798-6464", 31235.5, 32)
+        };
 
-        boolean bBool = true;
-        char c = 'z';
+        for(Person person : persons){
+            if(person.getAge() > 40)
+                person.printInfo();
+        }
 
-        String str = "Hi, peoples!";
+        int[] arr = {5, 1, 5, 2, 2, 4, 1, 4, 5, 1, 5, 3, 2, 4, 4, 4, 5, 1, 3, 4, 2, 2, 1, 2, 4, 4, 4, 5, 4, 3, 5, 4, 4,
+                5, 5, 1, 4, 1, 5, 3, 1, 4, 5, 3, 3, 4, 2, 2, 4, 4, 5, 5, 1, 1, 1, 4, 5, 5, 4, 4, 2, 4, 3, 1, 3, 3, 1, 1,
+                3, 1, 3, 4, 4, 3, 2, 2, 1, 3, 4, 4, 2, 3, 4, 2, 4, 4, 1, 4, 4, 4, 2, 1, 2, 4, 1, 5, 2, 2, 5, 4, 2, 2, 3,
+                1, 5, 5, 3, 5, 3, 1, 4, 5, 4, 2, 1, 3, 1, 2, 1, 4, 1, 3, 4, 2, 2, 5, 2, 3, 1, 1, 2, 3, 3, 4, 4, 2, 4, 1,
+                2, 2, 2, 5, 1, 5, 1, 2, 2, 1, 3, 3, 4, 3, 5, 3, 5, 1, 2, 1, 3, 3, 2, 4, 1, 4, 3, 5, 1, 2, 1, 2, 3, 2, 1,
+                3, 2, 2, 4, 3, 2, 1, 5, 1, 4, 5, 4, 4, 5, 5, 4, 2, 3, 5, 1, 3, 4, 3, 2, 4, 5, 2, 5, 2, 4, 1, 4, 5, 2, 3,
+                3, 4, 4, 3, 5, 2, 2, 3, 5, 1, 2, 4, 3, 4, 4, 3, 2, 2, 1, 4, 5, 5, 1, 5, 2, 4, 5, 5, 4, 2, 2, 1, 5, 1, 3,
+                4, 2, 4, 2, 2, 4, 3, 5, 2, 2, 4, 4, 4, 5, 5, 2, 5, 5, 2, 5, 1, 1, 5, 5, 4, 1, 2, 4, 1, 2, 2, 5, 4, 5, 1,
+                5, 4, 4, 5, 5, 5, 3, 3, 4, 3, 3, 5, 3, 2, 2, 2, 2, 2, 1, 2, 5, 2, 3, 4, 3, 5, 5, 2, 4, 5, 3, 4, 3, 1, 3,
+                2, 1, 1, 5, 4, 4, 2, 3, 1, 3, 4, 2, 4, 1, 3, 5, 1, 5, 3, 5, 2, 3, 4, 4, 1, 3, 1, 5, 5, 1, 2, 2, 1, 3, 1,
+                5, 1, 2, 2, 1, 5, 1, 3, 3, 2, 1, 3, 2, 5, 1, 1, 2, 3, 5, 5, 4, 3, 1, 3, 3, 1, 5, 4, 2, 3, 4};
 
-        System.out.println("CalcExpression: " + CalcExpression(dDouble, 3.14, 2.71, Math.log(2)));
-        System.out.println("CheckSum(15, 5): " + CheckSum(15, 5));
-        System.out.println("CheckSum(26, -5): " + CheckSum(26, -5));
-        PrintNumPositiveStatus(0);
-        PrintNumPositiveStatus(1);
-        PrintNumPositiveStatus(-1);
-        PrintHelloName("Antonio Banderos");
-        PrintIsLeapYear(2000);
-        PrintIsLeapYear(1999);
-        PrintIsLeapYear(2016);
+        printGroupsOfElements(arr, 5);
     }
 }
+
+
+
