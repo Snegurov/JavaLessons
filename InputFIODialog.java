@@ -34,12 +34,11 @@ public class InputFIODialog extends JFrame {
                 if(fieldToSetFIO != null)
                     fieldToSetFIO.setText(fields[0].getText() + " " + fields[1].getText() + " " + fields[2].getText());
 
-                dispose();
+                setVisible(false);
             }
         });
 
         setAlwaysOnTop(true);
         setResizable(false);
-        setVisible(true);
     }
 }

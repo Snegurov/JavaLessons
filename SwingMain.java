@@ -11,6 +11,8 @@ public class SwingMain {
 
 class MyWindow extends JFrame {
 
+    private static InputFIODialog fioDialog;
+
     public static void setWindowPosToScreenCenter(int width, int height, JFrame window){
         if(window == null)
             return;
@@ -39,10 +41,12 @@ class MyWindow extends JFrame {
         add(jtfFIO);
         add(jbt1);
 
+        fioDialog = new InputFIODialog(320, 240, jtfFIO);
+
         jbt1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                InputFIODialog fioDialog = new InputFIODialog(320, 240, jtfFIO);
+                fioDialog.setVisible(true);
             }
         });
 
